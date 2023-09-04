@@ -24,7 +24,19 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript repository for Contatinho API.
+
+# Work in progress
+
+<img alt="GIF" style="width: 450px; height: 450px" src="https://media.tenor.com/6cYTV2P3oDYAAAAd/working-hahacc.gif" />
+
+Next steps:
+
+- README.md
+- Documentation
+- Add more ways to search for contacts (more params)
+- Unit tests
+- E2E tests
 
 ## Installation
 
