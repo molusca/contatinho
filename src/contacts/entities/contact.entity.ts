@@ -22,11 +22,8 @@ export class Contact {
   @Column('boolean', { nullable: false, default: false })
   is_blocked?: boolean;
 
-  @Column('varchar', { nullable: false, length: 50 })
-  name!: string;
-
-  @Column('varchar', { nullable: true, length: 50 })
-  surname?: string;
+  @Column('varchar', { nullable: false, length: 255 })
+  full_name!: string;
 
   @Column('timestamptz', { nullable: true, default: null })
   birth_date?: Date;
@@ -43,13 +40,22 @@ export class Contact {
   @UpdateDateColumn()
   updated_at?: Date;
 
-  @OneToMany(() => Phone, (phone) => phone.contact)
+  @OneToMany(() => Phone, (phone) => phone.contact, {
+    cascade: true,
+    eager: true,
+  })
   phone_numbers?: Phone[];
 
-  @OneToMany(() => Email, (email) => email.contact)
+  @OneToMany(() => Email, (email) => email.contact, {
+    cascade: true,
+    eager: true,
+  })
   emails?: Email[];
 
-  @OneToMany(() => Address, (address) => address.contact)
+  @OneToMany(() => Address, (address) => address.contact, {
+    cascade: true,
+    eager: true,
+  })
   addresses?: Address[];
 
   constructor(contact_dto: CreateContactDto) {

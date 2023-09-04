@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AddressesModule } from './addresses/addresses.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ContactsModule } from './contacts/contacts.module';
-import { EmailsModule } from './emails/emails.module';
-import { PhonesModule } from './phones/phones.module';
 
 @Module({
   imports: [
@@ -19,12 +16,9 @@ import { PhonesModule } from './phones/phones.module';
       migrations: [__dirname + '/migration/**/*{.ts,.js}'],
       synchronize: true,
       migrationsRun: true,
-      logging: false,
+      logging: true,
     }),
     ContactsModule,
-    PhonesModule,
-    EmailsModule,
-    AddressesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

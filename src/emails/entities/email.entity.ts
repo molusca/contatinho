@@ -16,7 +16,11 @@ export class Email {
   @Column('text', { nullable: false })
   email!: string;
 
-  @ManyToOne(() => Contact, (contact) => contact.emails)
+  @ManyToOne(() => Contact, (contact) => contact.emails, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+    orphanedRowAction: 'delete',
+  })
   @JoinColumn({ name: 'contact_id' })
   contact!: Contact;
 

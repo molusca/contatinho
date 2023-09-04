@@ -37,7 +37,11 @@ export class Address {
   @Column('varchar', { nullable: true, length: 30 })
   zip_code?: string;
 
-  @ManyToOne(() => Contact, (contact) => contact.addresses)
+  @ManyToOne(() => Contact, (contact) => contact.addresses, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+    orphanedRowAction: 'delete',
+  })
   @JoinColumn({ name: 'contact_id' })
   contact!: Contact;
 

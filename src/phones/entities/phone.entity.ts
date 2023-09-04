@@ -19,7 +19,11 @@ export class Phone {
   @Column('varchar', { nullable: false, length: 20 })
   number!: string;
 
-  @ManyToOne(() => Contact, (contact) => contact.phone_numbers)
+  @ManyToOne(() => Contact, (contact) => contact.phone_numbers, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+    orphanedRowAction: 'delete',
+  })
   @JoinColumn({ name: 'contact_id' })
   contact!: Contact;
 

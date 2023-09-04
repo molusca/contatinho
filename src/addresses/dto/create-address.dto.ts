@@ -19,7 +19,6 @@ export class CreateAddressDto {
 
   @IsNotEmpty()
   @IsInt()
-  @MaxLength(255)
   number!: number;
 
   @IsOptional()

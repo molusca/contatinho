@@ -9,6 +9,7 @@ import {
   MaxLength,
   ValidateNested,
 } from 'class-validator';
+import { CreateAddressDto } from '../../addresses/dto/create-address.dto';
 import { CreateEmailDto } from '../../emails/dto/create-email.dto';
 import { CreatePhoneDto } from '../../phones/dto/create-phone.dto';
 
@@ -24,12 +25,7 @@ export class CreateContactDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(50)
-  name!: string;
-
-  @IsString()
-  @IsOptional()
-  @MaxLength(50)
-  surname?: string;
+  full_name!: string;
 
   @IsDateString()
   @IsOptional()
@@ -54,4 +50,10 @@ export class CreateContactDto {
   @Type(() => CreateEmailDto)
   @ValidateNested({ each: true })
   emails?: CreateEmailDto[];
+
+  @IsOptional()
+  @ArrayNotEmpty()
+  @Type(() => CreateAddressDto)
+  @ValidateNested({ each: true })
+  addresses?: CreateAddressDto[];
 }
